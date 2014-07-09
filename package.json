@@ -1,0 +1,15 @@
+{
+    "name": "insya.units",
+    "title": "Inline Units Conversion",
+    "description": "Brackets Inline Units Conversion Extension",
+    "homepage": "https://github.com/yasinkuyu/brackets-units",
+    "version": "0.0.5",
+    "author": "Yasin Kuyu <yasinkuyu@gmail.com>",
+    "keywords": [
+       "unit convert", "unit helper", "em to px", "px to em"
+    ],
+    "license": "MIT",
+    "engines": {
+        "brackets": ">=0.24.0"
+    }
+}
