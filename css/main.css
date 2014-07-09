@@ -89,7 +89,7 @@
 [data-tooltip]:after {
   z-index: 1000;
   padding: 8px;
-  width: 160px;
+  width: 10em;
   background-color: #000;
   background-color: hsla(0, 0%, 20%, 0.9);
   color: #fff;

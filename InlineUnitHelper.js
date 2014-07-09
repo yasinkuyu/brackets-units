@@ -77,10 +77,10 @@ define(function (require, exports, module) {
         var _this = this;
         
         // Test 
-        // -10000in
-        //  300ex
+        // 300px
         // 200em
-        // .10cn
+        // .10em
+        // 100in
         
         var templateVars = {
             units  : {
