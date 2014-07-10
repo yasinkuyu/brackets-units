@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2012 Adobe Systems Incorporated. All rights reserved.
+ * Copyright (c) 2014 Yasin Kuyu - All rights reserved
+ *               twitter.com/yasinkuyu & github.com/yasinkuyu
  *  
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"), 
@@ -20,6 +21,34 @@
  * DEALINGS IN THE SOFTWARE.
  * 
  */
+
+
+
+/**
+ * Units value list
+ */
+
+ol.css-unit-values{
+    color: #333;
+}
+    ol.css-unit-values li{
+        padding:0 0 0 15px;
+    }    
+    ol.css-unit-values li a{
+        line-height: 23px;
+        display: block;
+    }
+
+/**
+ * Units referances table
+ */
+
+table.css-reference{
+    width: 80%;
+    background: transparent;
+    text-align: left;
+    vertical-align: top;
+}
 
 /**
  * Tooltips!
@@ -89,7 +118,7 @@
 [data-tooltip]:after {
   z-index: 1000;
   padding: 8px;
-  width: 10em;
+  width: 160px;
   background-color: #000;
   background-color: hsla(0, 0%, 20%, 0.9);
   color: #fff;
@@ -230,9 +259,4 @@
 .tooltip-right:after {
   margin-left: 0;
   margin-bottom: -16px;
-}
-
-table.reference{
-    width: 80%;
-    background: transparent;
 }

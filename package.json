@@ -1,7 +1,7 @@
 {
     "name": "insya.units",
     "title": "Inline Units Conversion",
-    "description": "Brackets Inline Units Conversion Extension",
+    "description": "Brackets Inline Units Conversion Extension (px to em / em to px etc.)",
     "homepage": "https://github.com/yasinkuyu/brackets-units",
     "version": "0.0.5",
     "author": "Yasin Kuyu <yasinkuyu@gmail.com>",

@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2012 Adobe Systems Incorporated. All rights reserved.
+ * Copyright (c) 2014 Yasin Kuyu - All rights reserved
+ *               twitter.com/yasinkuyu & github.com/yasinkuyu
  *  
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"), 
@@ -77,7 +78,7 @@ define(function (require, exports, module) {
         var _this = this;
         
         // Test 
-        // 300px
+        // 18.75em
         // 200em
         // .10em
         // 100in
@@ -162,7 +163,7 @@ define(function (require, exports, module) {
     };
 
     /**
-     * round
+     * Round Function
      * @param number int
      * @param decimals decimal
      */
@@ -171,7 +172,7 @@ define(function (require, exports, module) {
     };
 
     /**
-     * convert
+     * Convert function
      * @param value int
      * @param from unit string
      * @param to unit string
@@ -253,18 +254,16 @@ define(function (require, exports, module) {
 
         return (isNaN(result) ? 'N/A ' + to : round(result, decimals) + to);
     };
- 
+    
     // Prevent clicks on some UI elements from taking up
-    $(window.document).on("mouseup", ".cm-number", function (e) {
-        e.preventDefault();
-        $(this).attr("data-tooltip", this._unit);
+    $(window.document).on("mouseup", function (e) {
+//        e.preventDefault();
+//        
+//        var newFormat = $(e.currentTarget).html().toLowerCase();
+
+//        $(this).attr("data-tooltip", newFormat);
+//        $(this).trigger("hover");
     });
         
-    // Prevent clicks on some UI elements from taking click
-    $(window.document).on("hover", ".cm-number", function (e) {
-        e.preventDefault();
-        $(this).attr("data-tooltip", this._unit);
-    });
- 
     module.exports = InlineUnitHelper;
 });

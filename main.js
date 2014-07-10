@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2012 Adobe Systems Incorporated. All rights reserved.
+ * Copyright (c) 2014 Yasin Kuyu - All rights reserved
+ *               twitter.com/yasinkuyu & github.com/yasinkuyu
  *  
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"), 
@@ -21,7 +22,6 @@
  * 
  */
 
-
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
 /*global define, brackets, $ */
 
@@ -40,20 +40,25 @@ define(function (require, exports, module) {
      * editor context if so; otherwise null.
      */
     function prepareEditorForProvider(hostEditor, pos) {
-        var colorRegEx, cursorLine, match, sel, start, end, startBookmark, endBookmark;
+        var unitRegEx, cursorLine, match, sel, start, end, startBookmark, endBookmark;
         
         sel = hostEditor.getSelection();
         if (sel.start.line !== sel.end.line) {
             return null;
         }
         
-        colorRegEx = new RegExp(/(\d*\.?\d+)\s?(px|em|ex|%|in|cn|mm|pt|pc+)/igm);
-        //colorRegEx = new RegExp(/(\d*\.?\d+)\s?(\w+)/igm);
+        /*
+         @Test & Contribution Pattern -> http://www.regexr.com/39424
+         Javascript, Html, CSS etc. units matches
+        */
+        unitRegEx = new RegExp(/(\d*\.?\d+)\s?(px|em|ex|%|in|cm|mm|pt|pc+)/igm);
+        //unitRegEx = new RegExp(/(\d*\.?\d+)\s?(\w+)/igm);
+        
         cursorLine = hostEditor.document.getLine(pos.line);
         
-        // Loop through each match of colorRegEx and stop when the one that contains pos is found.
+        // Loop through each match of unitRegEx and stop when the one that contains pos is found.
         do {
-            match = colorRegEx.exec(cursorLine);
+            match = unitRegEx.exec(cursorLine);
             if (match) {
                 start = match.index;
                 end = start + match[0].length;
@@ -66,7 +71,6 @@ define(function (require, exports, module) {
         }
         
         // Adjust pos to the beginning of the match so that the inline editor won't get 
-        // dismissed while we're updating the color with the new values from user's inline editing.
         pos.ch = start;
         
         startBookmark = hostEditor._codeMirror.setBookmark(pos);
@@ -110,9 +114,8 @@ define(function (require, exports, module) {
         }        
         
     }
-    
+
     // Initialize extension
     ExtensionUtils.loadStyleSheet(module, "css/main.css");
-
     EditorManager.registerInlineEditProvider(inlineUnitHelperProvider);
 });

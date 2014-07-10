@@ -1,18 +1,20 @@
 <div class="css-prop-defn" tabIndex="0"> 
     <div class="css-prop-summary quiet-scrollbars">
         <div class="scroller" tabIndex="0"> 
-            <dl>
-               <dt>Values</dt>
-                {{#units}}
-                <dd><a href="#" data-value="{{{value}}}" title="{{{title}}}" class="btnUnit">{{{calc}}}</a></dd>
+             <h1>Values</h1>
+             <ol class="css-unit-values">
+               {{#units}}
+                <li><a href="#" data-value="{{{value}}}" title="{{{title}}}" class="btnUnit">{{{calc}}}</a></li>
                 {{/units}}
-            </dl>
+            </ol>
+            <!-- ToDo more units... -->
         </div>
     </div>
+    
    <div class="css-prop-values">
         <h1>Inline Units Conversion</h1>
-        <span>Click the value you want to change from the left side.</span><br />
-        <table class="reference">
+        <p>Click the value you want to change from the left side.</p>
+        <table class="css-reference">
           <tbody>
            <tr>
             <th>Unit</th>
