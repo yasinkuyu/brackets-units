@@ -30,8 +30,12 @@ Select & `CTRL+E`
 
 ### Roadmap
 
+### Brackets Tools
+
+https://github.com/yasinkuyu/brackets-tools
+
 ### License
 
 The MIT License
 
-Created 2014 Yasin Kuyu - @yasinkuyu
+Created 2014 Yasin Kuyu - [@yasinkuyu](https://twitter.com/yasinkuyu)

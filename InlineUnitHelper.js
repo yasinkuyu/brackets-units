@@ -35,8 +35,12 @@ define(function (require, exports, module) {
         InlineWidget            = brackets.getModule("editor/InlineWidget").InlineWidget;
     
     // Load tempalte
-    var inlineEditorTemplate    = require("text!InlineUnitHelper.html");
+    var inlineEditorTemplate    = require("text!InlineUnitHelper.html"),
+        UnitUtils               = require("UnitUtils");
     
+    /**
+     * @constructor
+     */
     function InlineUnitHelper(value, unit, startBookmark, endBookmark) {
         
         this._value = value;
@@ -79,7 +83,7 @@ define(function (require, exports, module) {
         
         // Test 
         // 18.75em
-        // 200em
+        // 200pc
         // .10em
         // 100in
         
@@ -255,15 +259,26 @@ define(function (require, exports, module) {
         return (isNaN(result) ? 'N/A ' + to : round(result, decimals) + to);
     };
     
-    // Prevent clicks on some UI elements from taking up
-    $(window.document).on("mouseup", function (e) {
-//        e.preventDefault();
-//        
-//        var newFormat = $(e.currentTarget).html().toLowerCase();
+    var _handleTooltip = function (e) {
 
-//        $(this).attr("data-tooltip", newFormat);
-//        $(this).trigger("hover");
-    });
+        e.preventDefault();
+        
+        var $target = $(e.target);
+
+        var unitRegEx = new RegExp(UnitUtils.UNITS_REGEX),
+            match;
+        
+            match = unitRegEx.exec($target.text());
+        
+            if (match) {
+
+                $($target).attr("data-tooltip", match[0]);
+                $($target).trigger("mousemove");
+            }
+    };
+    
+    // ToDo handle tooltip
+    //$(window.document).on("mousemove", _handleTooltip);
         
     module.exports = InlineUnitHelper;
 });

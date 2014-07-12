@@ -23,7 +23,7 @@
  */
 
 /*jslint vars: true, plusplus: true, devel: true, nomen: true, regexp: true, indent: 4, maxerr: 50 */
-/*global define, brackets, $ */
+/*global define, brackets, $, window */
 
 define(function (require, exports, module) {
     "use strict";
@@ -33,7 +33,8 @@ define(function (require, exports, module) {
         ExtensionUtils          = brackets.getModule("utils/ExtensionUtils");
     
     // Local modules
-    var InlineUnitHelper        = require("InlineUnitHelper");
+    var InlineUnitHelper        = require("InlineUnitHelper"),
+        UnitUtils               = require("UnitUtils");
     
     /**
      * Prepare hostEditor for an InlineUnitEditor at pos if possible. Return
@@ -47,11 +48,7 @@ define(function (require, exports, module) {
             return null;
         }
         
-        /*
-         @Test & Contribution Pattern -> http://www.regexr.com/39424
-         Javascript, Html, CSS etc. units matches
-        */
-        unitRegEx = new RegExp(/(\d*\.?\d+)\s?(px|em|ex|%|in|cm|mm|pt|pc+)/igm);
+        unitRegEx = new RegExp(UnitUtils.UNITS_REGEX);
         //unitRegEx = new RegExp(/(\d*\.?\d+)\s?(\w+)/igm);
         
         cursorLine = hostEditor.document.getLine(pos.line);
@@ -114,8 +111,12 @@ define(function (require, exports, module) {
         }        
         
     }
-
+ 
     // Initialize extension
     ExtensionUtils.loadStyleSheet(module, "css/main.css");
     EditorManager.registerInlineEditProvider(inlineUnitHelperProvider);
+    
+    // for use by other InlineColorEditors
+    exports.inlineUnitHelperProvider = inlineUnitHelperProvider;
+    
 });

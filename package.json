@@ -3,7 +3,7 @@
     "title": "Inline Units Conversion",
     "description": "Brackets Inline Units Conversion Extension (px to em / em to px etc.)",
     "homepage": "https://github.com/yasinkuyu/brackets-units",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "author": "Yasin Kuyu <yasinkuyu@gmail.com>",
     "keywords": [
        "unit convert", "unit helper", "em to px", "px to em"
