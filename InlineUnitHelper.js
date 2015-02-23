@@ -81,17 +81,12 @@ define(function (require, exports, module) {
 
         var _this = this;
         
-        // Test 
-        // 18.75em
-        // 200pc
-        // .10em
-        // 100in
-        
         var templateVars = {
             units  : {
                       "units": [
                         { "unit": "px", "value": convert(_this._value, _this._unit, "px") },
                         { "unit": "em", "value": convert(_this._value, _this._unit, "em") },
+                        { "unit": "rem", "value": convert(_this._value, _this._unit, "rem") },
                         { "unit": "%", "value": convert(_this._value, _this._unit, "%") },
                         { "unit": "in", "value": convert(_this._value, _this._unit, "in") },
                         { "unit": "cm", "value": convert(_this._value, _this._unit, "cm") },
@@ -175,6 +170,13 @@ define(function (require, exports, module) {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 
+    // Test it ctrl+e
+    // 18.75em
+    // 200pc
+    // .10em
+    // 602.25rem
+    // 10000em
+
     /**
      * Convert function
      * @param value int
@@ -189,6 +191,7 @@ define(function (require, exports, module) {
 
                 'px-cm': value * 2.54 / dpi,
                 'px-em': value / base,
+                'px-rem': value * 100,
                 'px-in': value / dpi,
                 'px-mm': value * 2.54 / dpi * 10,
                 'px-pc': value / base,
@@ -196,6 +199,7 @@ define(function (require, exports, module) {
                 'px-%': value / base * 100,
  
                 'em-cm': value * 0.42175176,
+                'em-rem': value,
                 'em-in': value * 0.166044,
                 'em-mm': value / 0.237106301584,
                 'em-pc': value,
@@ -205,6 +209,7 @@ define(function (require, exports, module) {
 
                 '%-cm': value * base / 100 * 2.54 / dpi,
                 '%-em': value / 100,
+                '%-rem': value / 100,                
                 '%-in': value * base / 100 / dpi,
                 '%-mm': value * base / 100 * 2.54 / dpi * 10,
                 '%-pc': value / 100,
@@ -213,6 +218,7 @@ define(function (require, exports, module) {
 
                 'in-cm': value * 2.54,
                 'in-em': value / 0.166044,
+                'in-rem': value / 0.166044,
                 'in-mm': value * 2.54 * 10,
                 'in-pc': value / 0.166044,
                 'in-pt': value / 0.014842519685,
@@ -229,6 +235,7 @@ define(function (require, exports, module) {
 
                 'mm-cm': value / 10,
                 'mm-em': value * 0.237106301584,
+                'mm-rem': value * 0.237106301584,
                 'mm-in': value * 0.39 / 10,
                 'mm-pc': value / 4.42175176,
                 'mm-pt': value / 0.352777777778,
@@ -243,14 +250,24 @@ define(function (require, exports, module) {
                 'pt-pc': value * 0.0836458341698,
                 'pt-%': value / (base - 4) * 100,
                 'pt-px': value * 96 / 72,
+                'pt-rem': value * 96 / 72,
 
                 'pc-cm': value * 0.42175176,
                 'pc-em': value,
+                'pc-rem': value,
                 'pc-in': value * 0.166044,
                 'pc-mm': value * 4.42175176,
                 'pc-pt': value / 0.0836458341698,
                 'pc-%': value * 100,
-                'pc-px': value * base
+                'pc-px': value * base,
+                
+                'rem-cm': value * 0.42175176,
+                'rem-em': value,
+                'rem-in': value * 0.166044,
+                'rem-mm': value * 4.42175176,
+                'rem-pt': value / 0.0836458341698,
+                'rem-%': value * 100,
+                'rem-px': value / 100
 
             };
 
@@ -258,7 +275,7 @@ define(function (require, exports, module) {
 
         return (isNaN(result) ? 'N/A ' + to : round(result, decimals) + to);
     };
-    
+
     var _handleTooltip = function (e) {
 
         e.preventDefault();
