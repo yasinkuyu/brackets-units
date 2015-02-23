@@ -170,12 +170,12 @@ define(function (require, exports, module) {
         return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
     };
 
-    // Test it ctrl+e
+    // Test it, ctrl+e
     // 18.75em
     // 200pc
     // .10em
     // 602.25rem
-    // 10000em
+    // 720px
 
     /**
      * Convert function
@@ -191,7 +191,7 @@ define(function (require, exports, module) {
 
                 'px-cm': value * 2.54 / dpi,
                 'px-em': value / base,
-                'px-rem': value * 100,
+                'px-rem': value / 100, // ok
                 'px-in': value / dpi,
                 'px-mm': value * 2.54 / dpi * 10,
                 'px-pc': value / base,
@@ -245,12 +245,12 @@ define(function (require, exports, module) {
 
                 'pt-cm': value / 28.3464566929,
                 'pt-em': value / 11.955168,
+                'pt-rem': value * 96 / 72,
                 'pt-in': value * 0.014842519685,
                 'pt-mm': value * 0.352777777778,
                 'pt-pc': value * 0.0836458341698,
                 'pt-%': value / (base - 4) * 100,
                 'pt-px': value * 96 / 72,
-                'pt-rem': value * 96 / 72,
 
                 'pc-cm': value * 0.42175176,
                 'pc-em': value,
@@ -267,7 +267,7 @@ define(function (require, exports, module) {
                 'rem-mm': value * 4.42175176,
                 'rem-pt': value / 0.0836458341698,
                 'rem-%': value * 100,
-                'rem-px': value / 100
+                'rem-px': value * 100
 
             };
 
