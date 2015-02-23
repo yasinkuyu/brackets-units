@@ -33,7 +33,7 @@ define(function (require, exports) {
      * Javascript, Html, CSS etc. units matches
      * @const @type {RegExp}
      */
-    var UNITS_REGEX = /(\d*\.?\d+)\s?(px|em|ex|%|in|cm|mm|pt|pc+)/igm;
+    var UNITS_REGEX = /(\d*\.?\d+)\s?(px|em|rem|ex|%|in|cm|mm|pt|pc+)/igm;
 
     // Define public API
     exports.UNITS_REGEX = UNITS_REGEX;
